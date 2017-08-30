@@ -71,15 +71,20 @@ class insta_ninny:
 			self.api.follow(uid)
 			time.sleep(timeout)
 
-	def unfollowAccounts(self, user_ids):
+	def unfollowAccounts(self, user_ids, timeout):
 		for idx, uid in enumerate(user_ids):
 			print('IDX: ' + str(idx) + ' | Unfollowing UID: ' + str(uid))
 
 			self.api.unfollow(uid)
-			time.sleep(5)
+			time.sleep(timeout)
 
 ig_client = insta_ninny(test_username, test_password)
-user_info = ig_client.requestUserInfo(target_user_id)
-unique_followings = ig_client.requestUserFollowings(user_info, target_user_id)
-unique_followers = ig_client.requestUserFollowers(user_info, target_user_id)
-ig_client.followAccounts(unique_followings, 60)
+
+target_user_info = ig_client.requestUserInfo(target_user_id)
+target_unique_followers = ig_client.requestUserFollowers(target_user_info, target_user_id)
+
+test_user_info = ig_client.requestUserInfo(test_user_id)
+self_unique_followings = ig_client.requestUserFollowings(test_user_info, test_user_id)
+
+# unique_followings = ig_client.requestUserFollowings(user_info, target_user_id)
+ig_client.followAccounts(target_unique_followers, 60)
