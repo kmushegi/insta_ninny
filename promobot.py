@@ -8,8 +8,8 @@ import time
 import sys
 
 test_username = 't.589345'
-test_password = 'koka123'
-test_user_id = '5945742704'
+test_password = '*****'
+test_user_id = '*****'
 
 pair_username = ''
 pair_password = ''
